@@ -1,13 +1,9 @@
 const express = require('express')
-const aws = require("aws-sdk")
 const router = express.Router()
 const bookController = require("../controller/bookController")
 const userController = require("../controller/userController")
 const reviewController = require("../controller/reviewController")
 const middleware = require("../middleware/auth")
-// const uploadFile = require("../controller/awsFileUpload")
-
-
 
 
 
@@ -17,7 +13,6 @@ router.post("/login", userController.login)
 
 //--------------------------Book Api----------------------------------
 router.post("/books", middleware.authentication, middleware.authoization, bookController.createBook)
-
 router.get("/books", middleware.authentication, bookController.getBooks)
 router.get("/books/:bookId", middleware.authentication, bookController.getbookId)
 router.put("/books/:bookId", middleware.authentication, middleware.authoization, bookController.updateBooks)

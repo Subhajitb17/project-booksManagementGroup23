@@ -14,7 +14,7 @@ const isRequestBodyValid = function (requestBody) {
 }
 
 
-//===================================== CUser Registration==========================================
+//===================================== User Registration==========================================
 const registerUser = async function (req, res) {
     try {
         const getBodyData = req.body;
@@ -48,7 +48,7 @@ const registerUser = async function (req, res) {
         }
 
         if (!/^(\+\d{1,3}[- ]?)?\d{10}$/.test(phone)) {
-            return res.status(400).send({ status: false, message: " please enter valid Phone Number" })
+            return res.status(400).send({ status: false, message: "please enter valid Phone Number" })
         }
 
         let uniquePhoneNumber = await userModel.findOne({ phone: phone })
@@ -145,7 +145,7 @@ const login = async function (req, res) {
                 userId: logIn._id.toString(),
             },
             "SECRET-OF-GROUP23", {
-            expiresIn: "60min"
+            // expiresIn: "1min"
         }
         );
         res.setHeader("x-api-key", token);
